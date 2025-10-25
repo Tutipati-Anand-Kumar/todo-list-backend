@@ -7,6 +7,9 @@ const connectDB = require('./config/db');
 dotenv.config();
 connectDB();
 
+const userRoutes = require('./routes/userRoutes');
+const todoRoutes = require('./routes/todoRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,9 +20,6 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Todo List API is running!');
 });
-
-const userRoutes = require('./routes/userRoutes');
-const todoRoutes = require('./routes/todoRoutes');
 
 app.use('/users', userRoutes); 
 app.use('/todo', todoRoutes);
